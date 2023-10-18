@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.w {
+    width: 1196px;
+    margin: auto;
+}
+li{
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+body {
+    background-color: #14161a;
+}
+.header {
+    position: sticky;
+    top: 0;
+    height: 64px;
+    z-index: 5;
+    background-color: rgba(0,0,0,.3);
+    
+}
+.nav-1 {
+    float: left;
+}
+.nav-1 a {
+    display: block;
+    height: 64px;
+    line-height: 64px;
+    color: #00cc40;
+}
+.nav {
+    float: left;
+    margin-left: 25px;
+}
+.nav ul li {
+    float: left;
+}
+.nav ul li a {
+    display: block;
+    height: 64px;
+    padding: 0px 12px;
+    line-height: 64px;
+    font-size: 18px;
+    color: #eeeeee;
+}
+.nav ul li a:hover{
+    color: #00cc40;
+}
+.search {
+    float: left;
+    margin-left: 200px;
+    margin-top: 15px;
+    width: 190px;
+    height: 36px;
+}
+.search input {
+    float: left;
+    width: 150px;
+    height: 34px;
+    border: none ;
+    outline: none;
+    color: #cdcdcd;
+    border-radius: 5px 0 0 5px;
+    /* background-color: rgba(0, 0, 0, .5); */
+    background-color: #434248;
+}
+.search button {
+    float: left;
+    width: 40px;
+    height: 34px;
+    border-left: 1px solid #eeeeee ;
+    border-radius: 0 5px 5px 0;
+    border: 0;
+    /* background-color: rgba(0, 0, 0, .5); */
+    background-color: #434248;
+}
+.iconfon a img {
+    margin-top: 5px;
+    width: 25px;
+    height: 25px;
+    
+}
+
+.user {
+    float: left;
+    margin-left: 5px;
+    /* background-color: pink; */
+}
+.user ul li {
+    float: left;
+    width: 36px;
+    height: 64px;
+    margin-top: 10px;
+    margin-left: 8px;
+}
+.user ul li a {
+    font-size: 16px;
+    color: #FFFFFF80;
+}
+.user ul li a :hover {
+    color: #00cc40;
+}
+.user ul li a img{
+    float: left;
+    width: 25px;
+    height: 25px;
+}
+.user ul li a img {
+    color: #00cc40;
+}
+
+
+.acticle {
+    position: sticky;
+    top: 0;
+    left: 0;
+    height: 680px;
+    /* background-color: pink; */
+}
+.left {
+    float: left;
+    width: 380px;
+    height: 680px;
+    /* background-color: aqua; */
+    overflow: hidden;
+    margin-top: -10px;
+}
+.left-1 {
+    margin-top: 50px;
+    margin-left: 15px;
+    margin-bottom: 16px;
+    width: 320px;
+    height: 45px;
+    line-height: 45px;
+    /* background-color: #00cc40; */
+}
+.left-1 ul li {
+    margin-right: 10px;
+    float: left;
+}
+.left-1 ul li h4{
+    color: #FFFFFFE6;
+}
+.left-1 ul li a h4:hover {
+    color: #00cc40;
+} 
+.left-1 img {
+    width: 20px;
+    height: 20px;
+}
+.one img {
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+}
+
+.left-3 {
+    margin-left: 15px;
+    width: 320px;
+    height: 140px;
+    /* background-color: red; */
+}
+.three  {
+    padding: 10px 0;
+}
+.three li {
+    height: 40px;
+    line-height: 40px; 
+    /* background-color: #00cc40; */
+}
+.three li a {
+    color: #FFFFFFE6;
+    /* margin-left: 50px; */
+}
+.three li a:hover {
+    color: #00cc40;
+}
+
+.left-4 {
+    margin-left: 15px;
+    width: 320px;
+    height: 180px;
+    border-top: 3px solid #FFFFFF0A;
+    /* background-color: rgb(0, 255, 162); */
+}
+.left-5 {
+    margin-left: 15px;
+    width: 320px;
+    height: 100px;
+    border-top: 3px solid #FFFFFF0A;
+    /* background-color: yellow; */
+}
+.three img {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin-left: 30px;
+}
+.right {
+    float: left;
+    width: 816px;
+    /* height: 680px; */
+    /* background-color: rgb(246, 255, 0); */
+    overflow: hidden;
+    margin-top: -10px;
+}
+.right-1 {
+    /* position: sticky;
+    top: -84px; */
+    width: 816px;
+    height: 84px;
+    /* background-color: #00cc40; */
+}
+.right-1 a h3{
+    padding-top: 50px;
+    color: #fff;
+}
+.right-1 a:hover {
+    color: #00cc40;
+}
+.right-2 {
+    width: 816px;
+    height: 620px;
+    /* background-color: pink; */
+}
+.right-2 ul li {
+    margin-top: 28px;
+    margin-right: 18px;
+    float: left;
+    width: 186px;
+    height: 170px;
+    /* background-color: red; */
+}
+.right-2 ul li a {
+    color: #FFFFFFE6;
+}
+.right-2 ul li a h4:hover {
+    color: #00cc40;
+}
+.right-2 ul li a h4{
+    margin-top: 12px;
+}
+.right-2 ul li a img {
+    display: block;
+    width: 186px;
+    height: 105px;
+    cursor: pointer;
+    transition: all 0.6s;
+}
+.right-2 ul li a img:hover {
+    transform: scale(1.2);
+}
+.right-2 ul li p {
+    margin-top: 5px;
+    color: #FFFFFF80;
+    font-size: 14px;
+}

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱奇艺-在线观看网站</title>
+    <link rel="stylesheet" href="css/style.css" >
+    <link rel="stylesheet" href="css/swiper.min.css">
+</head>
+<body>
+    <div class="header w">
+      <div class="nav-1">
+        <h2><a href="#">iQIYI爱奇艺</a></h2>
+      </div>
+        <div class="nav">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="#">电视剧</a></li>
+                <li><a href="#">电影</a></li> 
+                <li><a href="#">云影院</a></li>
+                <li><a href="#">会员中心</a></li>
+            </ul>
+        </div>
+        <div class="search">
+            <input type="text" value="请输入想看的视频">
+            <button class="iconfon icon-huaban9">
+              <a><img src="img/16.png" alt=""></a>
+            </button>
+        </div>
+        <div class="user">
+          <ul>
+            <li>
+              <a href="#"><img src="img/vip.png"></a>
+              <a href="#"><h5>VIP</h5></a>
+            </li>
+            <li>
+              <a href="#"><img src="img/12.png"></a>
+              <a href="#"><h5>游戏</h5></a>
+            </li>
+            <li>
+              <a href="#"><img src="img/13.png"></a>
+              <a href="#"><h5>上传</h5></a>
+            </li>
+            <li>
+              <a href="#"><img src="img/14.png"></a>
+              <a href="#"><h5>客户</h5></a>
+            </li>
+            <li>
+              <a href="kanguo.html"><img src="img/15.png"></a>
+              <a href="kanguo.html"><h5>看过</h5></a>
+            </li>
+            <li>
+              <a href="denglu.html"><img src="img/31.png"></a>
+              <a href="denglu.html"><h5>登录</h5></a>
+            </li>
+          </ul>
+        </div>
+    </div>
+
+    <div class="wrap w">
+      <!-- 图片列表 -->
+        <div class="img-list">
+          <img src="img/1.jpg">
+          <img src="img/52.jpg">
+          <img src="img/53.jpg">
+          <img src="img/4.jpg">
+          <img src="img/5.jpg">
+        </div>
+        <!-- 左右小箭头 -->
+        <div class="arrow">
+           <a href="javascript:;" class="left"><</a>
+           <a href="javascript:;" class="right">></a>
+        </div>
+        <!-- 小圆点 -->
+            <ul class="circle-list">
+                <li class="circle active" data-n="0"></li>
+                <li class="circle" data-n="1"></li>
+                <li class="circle" data-n="2"></li>
+                <li class="circle" data-n="3"></li>
+                <li class="circle" data-n="4"></li>
+            </ul>
+    </div>
+    <script>
+      // 获取左右按钮和图片列表
+      let oLeft = document.querySelector(".left");
+      let oRight = document.querySelector(".right");
+      let oImgList = document.querySelector(".img-list");
+
+      // 克隆第一张图片
+      let clonefirstImg = oImgList.firstElementChild.cloneNode();
+      // 将第一张图片添加至图片列表末尾
+      oImgList.appendChild(clonefirstImg);
+
+      // 图片索引 代表当前是第几张图片
+      let index = 0;
+      // 设置函数节流锁
+      let lock = true;
+      function handleRightBtn() {
+        if (!lock) return;
+        index++;
+        oImgList.style.left = index* -1196 + "px" ;
+        oImgList.style.transition = "0.5s ease";
+        if (index === 5) {
+          index = 0;
+          setTimeout(() => {
+            oImgList.style.left = 0;
+            // 取消过渡500毫秒之后切换第一张图片
+            oImgList.style.transition = "none";
+          }, 500)
+        }
+        setCircles();
+        //关锁
+        lock = false;
+        setTimeout(() => {
+          lock = true;
+        }, 500);
+      }
+
+      // 右按钮的实现
+      oRight.addEventListener("click", handleRightBtn);
+
+
+      // 左按钮的实现
+      oLeft.addEventListener("click", () => {
+        if (!lock) return;
+        index--;
+        if(index === -1) {
+          oImgList.style.left = 5* -1196 + "px" ;
+          oImgList.style.transition = "none";
+          index = 4;
+          setTimeout(() => {
+            oImgList.style.left = index* -1196 + "px" ;
+            oImgList.style.transition = "0.5s ease";
+          }, 0)
+        }else {
+          oImgList.style.left = index* -1196 + "px" ;
+        }
+        setCircles();
+        //关锁
+        lock = false;
+        setTimeout(() => {
+          lock = true;
+        }, 500);
+      });
+
+
+      //获取小圆点
+      const circles = document.querySelectorAll(".circle");
+
+      function setCircles() {
+        for (let i = 0; i < circles.length; i++) {
+          if(i === index) {
+            circles[i].classList.add("active");
+          }else {
+            circles[i].classList.remove("active");
+          }
+        }
+      }
+
+      // 小圆点点击切换页面
+      const oCircle = document.querySelector(".circle-list");
+      oCircle.addEventListener("click", (e) => {
+        if(e.target.nodeName.toLowerCase() === "li" ){
+          const n = Number(e.target.getAttribute("data-n"));
+          console.log(n);
+          index = n;
+          setCircles();
+          oImgList.style.left = index* -1196 + "px" ;
+        }
+      })
+
+      //自动轮播,每个5000毫秒换页
+      let autoplay = setInterval(handleRightBtn, 5000);
+    </script>
+
+    <div class="one">
+      <div class="one-1">
+        <h2>猜你喜欢</h2>
+        <a href="#">查看更多></a>
+      </div>
+      <div class="one-2">
+        <ul>
+          <li>
+            <a href=""><img src="img/24.jpg"></a>
+            <h4>阿甘正传</h4>
+            <p>生活就像巧克力</p>
+          </li>
+          <li>
+            <a href=""><img src="img/7.jpg"></a>
+            <h4>肖申克的救赎</h4>
+            <p>重温宫崎骏经典</p>
+          </li>
+          <li>
+            <a href=""><img src="img/17.jpg"></a>
+            <h4>绿皮书</h4>
+            <p>黑白配爆笑公路行</p>
+          </li>
+          <li>
+            <a href=""><img src="img/20.jpg"></a>
+            <h4>遗愿清单</h4>
+            <p>人生最后的美好旅程</p>
+          </li>
+          <li>
+            <a href=""><img src="img/21.jpg"></a>
+            <h4>当幸福来敲门</h4>
+            <p>投资家的励志传奇</p>
+          </li>
+          <li class="last">
+            <a href=""><img src="img/23.jpg"></a>
+            <h4>华尔街之狼</h4>
+            <p>小李子成金融大鳄</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="one">
+      <div class="one-1">
+        <h2>电影</h2>
+        <a href="#">查看更多></a>
+      </div>
+      <div class="one-2">
+        <ul>
+          <li>
+            <a href=""><img src="img/26.jpg"></a>
+            <h4>一条狗的使命</h4>
+            <p>人狗情缘再续</p>
+          </li>
+          <li>
+            <a href=""><img src="img/25.jpg"></a>
+            <h4>血战钢锯岭</h4>
+            <p>年度最受期待战争片</p>
+          </li>
+          <li>
+            <a href=""><img src="img/27.jpg"></a>
+            <h4>我在雨中等你</h4>
+            <p>一条狗的故事</p>
+          </li>
+          <li>
+            <a href=""><img src="img/28.jpg"></a>
+            <h4>心灵捕手</h4>
+            <p>达蒙邂逅人生导师</p>
+          </li>
+          <li>
+            <a href=""><img src="img/29.jpg"></a>
+            <h4>怦然心动</h4>
+            <p>投资家的励志传奇</p>
+          </li>
+          <li class="last">
+            <a href=""><img src="img/30.jpg"></a>
+            <h4>泰坦尼克号</h4>
+            <p>赢得最多奥斯卡奖</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="one">
+      <div class="one-1">
+        <h2>动漫</h2>
+        <a href="#">查看更多></a>
+      </div>
+      <div class="one-2">
+        <ul>
+          <li>
+            <a href=""><img src="img/33.jpg"></a>
+            <h4>海贼王</h4>
+            <p>草帽路飞伟大冒险</p>
+          </li>
+          <li>
+            <a href=""><img src="img/34.jpg"></a>
+            <h4>咒术回战第二季</h4>
+            <p>最强咒术师归来</p>
+          </li>
+          <li>
+            <a href=""><img src="img/35.jpg"></a>
+            <h4>强风吹拂</h4>
+            <p>奔跑吧！青春</p>
+          </li>
+          <li>
+            <a href=""><img src="img/36.jpg"></a>
+            <h4>Fate/stay night</h4>
+            <p>人命运之夜圣杯之愿</p>
+          </li>
+          <li>
+            <a href=""><img src="img/37.jpg"></a>
+            <h4>刀剑神域</h4>
+            <p>网游传说的起点</p>
+          </li>
+          <li class="last">
+            <a href=""><img src="img/38.jpg"></a>
+            <h4>黑色四叶草</h4>
+            <p>魔导少年称霸魔法世界</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="one">
+      <div class="one-1">
+        <h2>电视剧</h2>
+        <a href="#">查看更多></a>
+      </div>
+      <div class="one-2">
+        <ul>
+          <li>
+            <a href=""><img src="img/39.jpg"></a>
+            <h4>他从火光中走来</h4>
+            <p>黄景瑜张婧仪心动救缘</p>
+          </li>
+          <li>
+            <a href=""><img src="img/40.jpg"></a>
+            <h4>特工任务</h4>
+            <p>韩庚魏大勋邀你入局</p>
+          </li>
+          <li>
+            <a href=""><img src="img/41.jpg"></a>
+            <h4>云之羽</h4>
+            <p>虞书欣张凌赫谍爱交锋</p>
+          </li>
+          <li>
+            <a href=""><img src="img/43.jpg"></a>
+            <h4>闻香探案录</h4>
+            <p>神秘少女闻香断案</p>
+          </li>
+          <li>
+            <a href=""><img src="img/44.jpg"></a>
+            <h4>反骗警察</h4>
+            <p>新警卧底诈骗团伙破局</p>
+          </li>
+          <li class="last">
+            <a href=""><img src="img/45.jpg"></a>
+            <h4>宿命之敌</h4>
+            <p>高至霆王森谍海浮沉</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="one">
+      <div class="one-1">
+        <h2>综艺节目</h2>
+        <a href="#">查看更多></a>
+      </div>
+      <div class="one-2">
+        <ul>
+          <li>
+            <a href=""><img src="img/46.jpg"></a>
+            <h4>你好生活第4季节</h4>
+            <p>新青年旅行生活慢综艺</p>
+          </li>
+          <li>
+            <a href=""><img src="img/47.jpg"></a>
+            <h4>主持人大赛</h4>
+            <p>2023央视主持人大赛</p>
+          </li>
+          <li>
+            <a href=""><img src="img/48.jpg"></a>
+            <h4>向山海出发</h4>
+            <p>探索世界认知自我</p>
+          </li>
+          <li>
+            <a href=""><img src="img/49.jpg"></a>
+            <h4>中国好声音2023</h4>
+            <p>老牌音综全面升级！</p>
+          </li>
+          <li>
+            <a href=""><img src="img/50.jpg"></a>
+            <h4>哈哈哈哈哈哈第二季</h4>
+            <p>邓超陈赫鹿晗兄弟互坑</p>
+          </li>
+          <li class="last">
+            <a href=""><img src="img/51.jpg"></a>
+            <h4>一起露营吧第二季</h4>
+            <p>升级版主题露营企划</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 尾部 -->
+    <div class="footer">
+      <div class="footer-1">
+        <p>关于我们</p>
+        <ul>
+          <li><a href="#">公司介绍</a></li>
+          <li><a href="#">国内外新闻</a></li>
+          <li><a href="#">Investor Relations</a></li>
+          <li><a href="#">加入我们</a></li>
+          <li><a href="#">联系我们</a></li>
+          <li><a href="#">iQ.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-2">
+        <P>业务合作</P>
+        <ul>
+          <li><a href="#">专业内容合作</a></li>
+          <li><a href="#">技术合作</a></li>
+          <li><a href="#">只能硬件合作</a></li>
+          <li><a href="#">广告及IP衍生品合作</a></li>
+          <li><a href="#">游戏业务合作</a></li>
+          <li><a href="#">线下娱乐合作</a></li>
+          <li><a href="#">VIP会员采购及合作</a></li>
+          <li><a href="#">爱奇艺iQ号分账合作</a></li>
+        </ul>
+      </div>
+      <div class="footer-3">
+        <p>服务声明</p>
+        <ul>
+          <li><a href="#">用户协议</a></li>
+          <li><a href="#">内容投诉</a></li>
+          <li><a href="#">隐私政策</a></li>
+          <li><a href="#">历史协议版本</a></li>
+        </ul>
+      </div>
+    </div>
+</body>
+</html>
